@@ -23,7 +23,7 @@ const isMob = isMobile().phone;
 
 const Join = (props) => {
   return (
-    <Box className='join'>
+    <Box className='join-wrap'>
       <Box className='join-backgroud'>
         <Image
           aspectRatio={1440 / 1440}
@@ -31,7 +31,7 @@ const Join = (props) => {
           style={{ backgroundColor: 'none' }}
         ></Image>
       </Box>
-      <Box className='join-container' id='join' name='join'>
+      <Box className='join-container' id='join'>
         <Typography variant='h2' className='title'>
           How To Join
         </Typography>
@@ -43,30 +43,26 @@ const Join = (props) => {
           adjust-content='center'
           container
         >
-          <Grid item xs>
-            <Link href='//hihonor.com/global/'>
-              <Image
-                aspectRatio={338 / 235}
-                src={step01}
-                style={{ backgroundColor: 'none' }}
-              ></Image>
-            </Link>
+          <Grid className='steps-item' item xs>
+            <Image
+              aspectRatio={338 / 235}
+              src={step01}
+              style={{ backgroundColor: 'none' }}
+            ></Image>
           </Grid>
-          <Grid item xs>
+          <Grid className='steps-item' item xs>
             <Image
               aspectRatio={338 / 235}
               src={step02}
               style={{ backgroundColor: 'none' }}
             ></Image>
           </Grid>
-          <Grid item xs>
-            <Link href='//hihonor.com/global/events/microsoft365-challenge/'>
-              <Image
-                aspectRatio={338 / 235}
-                src={step03}
-                style={{ backgroundColor: 'none' }}
-              ></Image>
-            </Link>
+          <Grid className='steps-item' item xs>
+            <Image
+              aspectRatio={338 / 235}
+              src={step03}
+              style={{ backgroundColor: 'none' }}
+            ></Image>
           </Grid>
         </Grid>
         <div className='timeline'>

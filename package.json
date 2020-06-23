@@ -23,7 +23,7 @@
     "reactjs-popup": "^1.5.0",
     "swiper": "^5.4.5"
   },
-  "homepage": "./",
+  "homepage": "/content/dam/honor/global/events/2020/microsoft365-challenge/",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",

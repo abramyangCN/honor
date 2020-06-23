@@ -39,7 +39,7 @@ const Prize = (props) => {
   };
 
   return (
-    <Box className='prize'>
+    <Box className='prize-wrap'>
       <Box className='prize-backgroud'>
         <Image
           aspectRatio={1440 / 935}
@@ -55,7 +55,11 @@ const Prize = (props) => {
 
         <div className={classes.root}>
           <div className='prize-items'>
-            <div className={`prize-item ${expand === '2' ? 'expand' : ''}`}>
+            <div
+              className={`prize-item prize-second ${
+                expand === '2' ? 'expand' : ''
+              }`}
+            >
               <div className='prize-award'>
                 <Image
                   className='prize-award-image'
@@ -70,7 +74,7 @@ const Prize = (props) => {
                 elevation={3}
               >
                 <HonorBadge class='honor-badge' order='2'></HonorBadge>
-                <Typography variant='h3'>Master</Typography>
+                <Typography variant='h3'>Creative (x3)</Typography>
                 <Typography className='subtitle'>
                   &mdash; AWARD &mdash;
                 </Typography>
@@ -81,7 +85,11 @@ const Prize = (props) => {
               </Paper>
             </div>
 
-            <div className={`prize-item ${expand === '1' ? 'expand' : ''}`}>
+            <div
+              className={`prize-item prize-first ${
+                expand === '1' ? 'expand' : ''
+              }`}
+            >
               <div className='prize-award'>
                 <Image
                   className='prize-award-image'
@@ -96,7 +104,7 @@ const Prize = (props) => {
                 elevation={3}
               >
                 <HonorBadge order='1'></HonorBadge>
-                <Typography variant='h3'>Champion</Typography>
+                <Typography variant='h3'>Master (x2)</Typography>
                 <Typography className='subtitle'>
                   &mdash; AWARD &mdash;
                 </Typography>
@@ -106,7 +114,12 @@ const Prize = (props) => {
                 </Typography>
               </Paper>
             </div>
-            <div className={`prize-item ${expand === '3' ? 'expand' : ''}`}>
+
+            <div
+              className={`prize-item prize-third ${
+                expand === '3' ? 'expand' : ''
+              }`}
+            >
               <div className='prize-award'>
                 <Image
                   className='prize-award-image'
@@ -121,7 +134,7 @@ const Prize = (props) => {
                 elevation={3}
               >
                 <HonorBadge order='3'></HonorBadge>
-                <Typography variant='h3'>Professional</Typography>
+                <Typography variant='h3'>Brilliance (x5)</Typography>
                 <Typography className='subtitle'>
                   &mdash; AWARD &mdash;
                 </Typography>

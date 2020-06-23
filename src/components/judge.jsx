@@ -13,8 +13,8 @@ import TitleBullets from '../utils/TitleBullets';
 
 import bgImage from '../assets/images/judge/judge_bg.png';
 import avatar01 from '../assets/images/judge/Monsieur.png';
-import avatar02 from '../assets/images/judge/Rubens.png';
-import avatar03 from '../assets/images/judge/Sebastiano.png';
+import avatar02 from '../assets/images/judge/Sebastiano.png';
+import avatar03 from '../assets/images/judge/Rubens.png';
 
 import '../assets/css/sass/judge.scss';
 
@@ -57,7 +57,7 @@ const Judge = (props) => {
   };
 
   return (
-    <Box className='judge' id='judge' name='judge'>
+    <Box className='judge-wrap'>
       <Box className='judge-backgroud'>
         <Image
           aspectRatio={1440 / 761}
@@ -65,27 +65,27 @@ const Judge = (props) => {
           style={{ backgroundColor: 'none' }}
         ></Image>
       </Box>
-      <Box className='judge-container'>
+      <Box className='judge-container' id='judge'>
         <Typography variant='h2' className='title'>
           Our Judges
         </Typography>
         <TitleBullets />
         <Swiper {...params}>
           {judges.map(({ name, description, avatar }) => (
-            <div>
+            <div key={name}>
               <div className='swiper-card-container'>
                 <div className='swiper-card-inner'>
                   <div className='avatar-container'>
                     <div
-                      class='swiper-button-prev avatar-prev'
-                      tabindex='0'
+                      className='swiper-button-prev avatar-prev'
+                      tabIndex='0'
                       role='button'
                       aria-label='Previous slide'
                     ></div>
                     <Avatar alt={name} src={avatar} className='avatar-large' />
                     <div
-                      class='swiper-button-next  avatar-next'
-                      tabindex='0'
+                      className='swiper-button-next  avatar-next'
+                      tabIndex='0'
                       role='button'
                       aria-label='Next slide'
                     ></div>

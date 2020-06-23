@@ -1,6 +1,6 @@
 @import '../mixins/index.scss';
 
-.join {
+.join-wrap {
   background: none;
   position: relative;
   padding-top: p2p(1148, 1440);
@@ -58,5 +58,60 @@
   .timeline {
     width: 100%;
     margin-top: p2r(60);
+  }
+
+  @include media($tablet) {
+    z-index: 10;
+    background: #141414;
+    padding-top: p2r(80);
+    padding-bottom: p2r(200);
+
+    .title {
+      font-size: p2r(75);
+    }
+
+    .join-backgroud {
+      position: absolute;
+      top: p2p(-80, 1440);
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+    }
+
+    .join-container {
+      position: relative;
+      margin-top: p2r(100);
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 10;
+    }
+
+    .join-items {
+      margin-top: p2r(80);
+      flex-basis: 100%;
+      width: 100%;
+      max-width: 100%;
+      flex-wrap: wrap;
+    }
+
+    .steps-container {
+      flex-wrap: wrap;
+      padding-top: p2r(80);
+      .steps-item {
+        max-width: 100%;
+        width: 100%;
+        padding: p2r(20) p2r(40);
+        flex-basis: 100%;
+      }
+    }
+
+    .timeline {
+      padding: p2r(40);
+      box-sizing: border-box;
+    }
+    
   }
 }

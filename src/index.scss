@@ -34,6 +34,7 @@ html {
   padding: 0;
   font-size: rootFont($_extraLarge);
   font-family: 'avenirnext', 'sans-serif';
+  background: white;
   @include media($extraLarge) {
     font-size: rootFont($_extraLarge);
   }
@@ -196,5 +197,25 @@ h2 {
     right: 1rem;
     cursor: pointer;
     color: black;
+  }
+  @include media($tablet) {
+    width: 80% !important;
+  }
+}
+
+.popup-content .modal {
+  position: relative !important;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1050;
+  display: block !important;
+  overflow: visible;
+}
+
+a {
+  &:focus {
+    outline: none;
   }
 }

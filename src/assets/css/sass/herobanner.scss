@@ -21,4 +21,27 @@
       bottom: p2e(16, 28);
     }
   }
+
+  .hero-image {
+    div {
+      background: none;
+    }
+  }
+
+  @include media($tablet) {
+    .hero-container {
+      flex-direction: column-reverse;
+    }
+
+    .hero-text,
+    .hero-image {
+      max-width: 100%;
+      width: 100%;
+      flex-basis: 100%;
+      text-align: center;
+      margin-top: p2r(40);
+    }
+
+    padding-bottom: p2r(100);
+  }
 }

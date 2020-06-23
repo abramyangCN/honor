@@ -23,15 +23,15 @@ const HeroBanner = (props) => {
   const classes = useStyles();
   return (
     <Box id='home' className={classes.root}>
-      <Grid container alignItems='center'>
+      <Grid className='hero-container' container alignItems='center'>
         <Grid item xs={1} />
-        <Grid item xs={5}>
+        <Grid className='hero-text' item xs={5}>
           <Typography variant='h1' noWrap>
-            Ramp Up Your Productivity
+            Looking to the Future
           </Typography>
-          <p>12-month subscription of Microsoft 365 Personal included</p>
+          <p>Microsoft 365 Challenge</p>
         </Grid>
-        <Grid item xs={6}>
+        <Grid className='hero-image' item xs={6}>
           <Image src={heroImage} aspectRatio={1832 / 1090}></Image>
         </Grid>
       </Grid>

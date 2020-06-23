@@ -10,10 +10,22 @@ footer {
 
   .share-link {
     margin: 0 p2r(30);
+    font-size: p2r(16);
+    line-height: p2r(16);
+    text-transform: none;
     .MuiIconButton-label {
       svg {
         color: white;
       }
+    }
+
+    .honor-club {
+      width: auto;
+      height: p2r(22);
+    }
+
+    .MuiButton-iconSizeLarge > *:first-child {
+      font-size: p2r(22);
     }
   }
   .copyrights {
@@ -21,6 +33,8 @@ footer {
   }
   .copyright {
     font-size: p2r(14);
+    overflow: visible;
+    text-overflow: initial;
   }
   .footer-links {
     text-align: right;
@@ -28,7 +42,7 @@ footer {
   .footer-link {
     cursor: pointer;
     font-size: p2r(14);
-    margin: 0 p2r(40);
+    margin: 0 p2r(20);
     text-align: right;
     color: white;
     font-weight: normal;
@@ -38,6 +52,38 @@ footer {
     color: white;
     span {
       color: white;
+    }
+  }
+
+  @include media($tablet) {
+    .copyrights {
+      flex-direction: column-reverse;
+
+      .copyright-item {
+        width: 100%;
+        max-width: 100%;
+        flex-basis: 100%;
+        margin-top: p2r(20);
+        .copyright {
+          font-size: p2r(28);
+          text-align: center;
+        }
+      }
+
+      .footer-links {
+        text-align: center;
+        .footer-link {
+          font-size: p2r(28);
+        }
+      }
+    }
+
+    .share-link {
+      margin: 0;
+      font-size: p2r(28);
+      .MuiButton-iconSizeLarge > *:first-child {
+        font-size: p2r(38);
+      }
     }
   }
 }

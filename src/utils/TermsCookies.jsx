@@ -27,11 +27,13 @@ const TermsCookies = () => {
 
         <Typography variant='h4'>How to join</Typography>
         <Typography>
-          (1) Be a registered member of HiHONOR (hihonor.com/global/). (2)
-          Participants should design a photo (JPG or PNG, less than 20MB) or a
-          video (MP4, less than 200MB). (3) Participants need to upload works to
-          this contest page (www.hihonor.com/global/events/
-          microsoft365-challenge/).
+          (1) Be a registered member of HiHONOR (hihonor.com/global/).
+          <br />
+          (2) Participants should design a photo (JPG or PNG, less than 20MB) or
+          a video (MP4, less than 200MB).
+          <br />
+          (3) Participants need to upload works to this contest page
+          (www.hihonor.com/global/events/ microsoft365-challenge/).
         </Typography>
         <Typography variant='h4'>Activity Rules</Typography>
         <Typography>
@@ -44,8 +46,11 @@ const TermsCookies = () => {
           <br />
           (2) The winning list will be announced on 21st July, 2020.
           <br />
-          (3) Winners will be announced on the page
-          (www.hihonor.com/global/events/ microsoft365-challenge/).
+          (3) Winners will be announced on the page (
+          <a href='https://www.hihonor.com/global/events/microsoft365-challenge/'>
+            https://www.hihonor.com/global/events/microsoft365-challenge/
+          </a>
+          ).
           <br />
           (4) Winners will be selected from all designs according to selection
           criteria.
@@ -123,11 +128,16 @@ const TermsCookies = () => {
           Participants can exercise the rights to access, rectification,
           erasure, restriction, objection or portability of data, or if you have
           any complaint or query about how Huawei processes your personal data,
-          to contact us
-          (https://www.hihonor.com/global/legal/privacy-questions/). If you want
-          to learn more about Huawei’s privacy commitments in general, please
-          read our Huawei Consumer Business Privacy Statement
-          (https://www.hihonor.com/global/privacy-policy/).
+          to contact us (
+          <a href='https://www.hihonor.com/global/legal/privacy-questions/'>
+            https://www.hihonor.com/global/legal/privacy-questions/
+          </a>
+          ). If you want to learn more about Huawei’s privacy commitments in
+          general, please read our Huawei Consumer Business Privacy Statement (
+          <a href='https://www.hihonor.com/global/privacy-policy/'>
+            https://www.hihonor.com/global/privacy-policy/
+          </a>
+          ).
         </Typography>
 
         <Typography variant='h4'>Rights of Use</Typography>

@@ -11,6 +11,7 @@
       left: p2p(60, $size);
       right: p2p(60, $size);
     }
+    box-sizing: border-box;
   }
   .logo {
     width: p2r(300);
@@ -27,6 +28,12 @@
       width: 100%;
       display: inline-block;
       vertical-align: middle;
+    }
+
+    @include media($tablet) {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
     }
   }
 
@@ -87,5 +94,26 @@
 
   a {
     text-decoration: none;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  .menu-icon {
+    font-size: p2r(48);
+  }
+
+  @include media($tablet) {
+    .MuiPopover-paper {
+      overflow-x: visible !important;
+    }
+
+    .mobile-menu {
+      overflow: visible !important;
+      .MuiMenu-paper.MuiPopover-paper {
+        overflow: visible !important;
+      }
+    }
   }
 }

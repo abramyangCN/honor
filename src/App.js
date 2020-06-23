@@ -16,7 +16,7 @@ import './App.css';
 const data = [
   {
     id: '0',
-    title: 'About M360',
+    title: 'About M365',
     link: 'home',
     isAnchor: true,
   },
@@ -29,7 +29,7 @@ const data = [
   // },
   {
     id: '3',
-    title: 'How to join',
+    title: 'How To Join',
     link: 'join',
     isAnchor: true,
   },

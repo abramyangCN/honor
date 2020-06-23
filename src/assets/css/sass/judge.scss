@@ -1,6 +1,6 @@
 @import '../mixins/index.scss';
 
-.judge {
+.judge-wrap {
   background: none;
   position: relative;
   padding-top: p2p(761, 1440);
@@ -45,11 +45,11 @@
 
   .judge-container {
     position: absolute;
-    padding-top: p2r(100);
+    margin-top: p2r(100);
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
+    height: auto;
     z-index: 10;
     box-sizing: border-box;
   }
@@ -88,11 +88,17 @@
           left: auto;
           right: 110%;
           opacity: 0;
+          @include media($tablet) {
+            display: none;
+          }
         }
         .avatar-next {
           right: auto;
           left: 110%;
           opacity: 0;
+          @include media($tablet) {
+            display: none;
+          }
         }
         .avatar-large {
           width: 100%;
@@ -123,6 +129,7 @@
           @include absoluteCenter;
           width: p2p(390, 614);
           padding-left: p2r(167);
+          box-sizing: content-box;
         }
       }
     }
@@ -146,6 +153,75 @@
         }
         .card-container {
           opacity: 1;
+        }
+      }
+    }
+  }
+
+  @include media($tablet) {
+    z-index: 11;
+    padding-top: 0;
+    padding-bottom: p2r(500);
+    @include media($mobile) {
+      padding-bottom: p2r(100);
+    }
+    .title {
+      font-size: p2r(75);
+    }
+
+    .judge-container {
+      position: relative;
+      box-sizing: border-box;
+    }
+
+    .judge-backgroud {
+      top: p2p(-280, 750);
+
+      div {
+        height: 55% !important;
+        overflow: hidden;
+        box-sizing: content-box;
+        img {
+          width: auto !important;
+        }
+      }
+    }
+
+    .swiper-container {
+      margin-top: p2p(100, 750);
+    }
+
+    .swiper-slide {
+      width: p2r(580);
+      margin: {
+        left: p2r(-100);
+        right: p2r(-100);
+      }
+      transition: all 0.3s ease 0.2s;
+    }
+
+    .swiper-card-container {
+      width: p2r(580);
+      .swiper-card-inner {
+        .avatar-container {
+          left: 50%;
+        }
+        .card-container {
+          .card-content {
+            width: p2p(400, 580);
+            padding-left: p2r(100);
+          }
+        }
+      }
+    }
+
+    .swiper-slide-active {
+      .swiper-card-container {
+        width: p2r(580);
+        .swiper-card-inner {
+          .avatar-container {
+            left: p2r(90);
+          }
         }
       }
     }

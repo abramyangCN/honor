@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { fade, makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
 // import Typography from '@material-ui/core/Typography';
-// import MenuItem from '@material-ui/core/MenuItem';
+import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import MenuIcon from '@material-ui/icons/Menu';
 import AccountCircle from '@material-ui/icons/AccountCircle';
@@ -130,6 +130,21 @@ export default function Header(props) {
   );
 
   const mobileMenuId = 'primary-search-account-menu-mobile';
+
+  const [openPopup, setOpenPopup] = useState(false);
+
+  const closeModal = () => {
+    setOpenPopup(false);
+  };
+  const openModal = () => {
+    setOpenPopup(true);
+  };
+
+  const handleEventBundle = () => {
+    openModal();
+    handleMenuClose();
+  };
+
   const renderMobileMenu = (
     <Menu
       anchorEl={mobileMoreAnchorEl}
@@ -139,19 +154,35 @@ export default function Header(props) {
       keepMounted
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}
+      className='mobile-menu'
     >
-      {/* {data.filter((item) => {
-        // const { id, title, link } = item;
-        return item.id !== item.length - 1 ? (
-          <MenuItem
-            key={item.id}
-            href={`#${item.link}`}
-            onClick={handleMenuClose}
-          >
-            <p>{item.title}</p>
-          </MenuItem>
-        ) : null;
-      })} */}
+      {data.map(({ id, title, link, hrefLink }) => {
+        if (link)
+          return (
+            <ScrollLink
+              to={link}
+              spy={true}
+              smooth={true}
+              hashSpy={true}
+              offset={-130}
+              duration={400}
+              isDynamic={true}
+              onClick={handleMenuClose}
+              key={id}
+            >
+              <MenuItem>
+                <p>{title}</p>
+              </MenuItem>
+            </ScrollLink>
+          );
+        if (hrefLink)
+          return (
+            <MenuItem key={id} onClick={handleEventBundle}>
+              <p>{title}</p>
+            </MenuItem>
+          );
+        return null;
+      })}
     </Menu>
   );
 
@@ -163,6 +194,7 @@ export default function Header(props) {
             className={'logo'}
             aria-label='show 4 new mails'
             color='inherit'
+            href='//www.hihonor.com/global/'
           >
             <img src={logo} alt='' />
           </ButtonBase>
@@ -179,8 +211,9 @@ export default function Header(props) {
                     offset={-150}
                     duration={400}
                     isDynamic={true}
+                    key={id}
                   >
-                    <Button className={`nav-link`} key={id}>
+                    <Button className={`nav-link`}>
                       <p>{title}</p>
                     </Button>
                   </ScrollLink>
@@ -188,8 +221,9 @@ export default function Header(props) {
               if (hrefLink)
                 return (
                   <Popup
+                    key={id}
                     trigger={
-                      <Button className={`nav-link`} key={id}>
+                      <Button className={`nav-link`}>
                         <p>{title}</p>
                       </Button>
                     }
@@ -230,15 +264,27 @@ export default function Header(props) {
               onClick={handleMobileMenuOpen}
               color='inherit'
             >
-              <MenuIcon />
+              <MenuIcon className='menu-icon' />
             </IconButton>
           </div>
         </Toolbar>
       </AppBar>
       {renderMobileMenu}
       {renderMenu}
+      <Popup
+        open={openPopup}
+        closeOnDocumentClick
+        onClose={closeModal}
+        modal
+        closeOnDocumentClick
+      >
+        <div className='popup-modal'>
+          <a className='close' onClick={closeModal}>
+            &times;
+          </a>
+          <TermsCookies></TermsCookies>
+        </div>
+      </Popup>
     </div>
   );
 }
-
-
