@@ -3,12 +3,25 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.29",
+    "@fortawesome/free-brands-svg-icons": "^5.13.1",
+    "@fortawesome/free-solid-svg-icons": "^5.13.1",
+    "@fortawesome/react-fontawesome": "^0.1.11",
+    "@material-ui/core": "^4.10.2",
+    "@material-ui/icons": "^4.9.1",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
+    "ismobilejs": "^1.1.1",
+    "material-ui-image": "^3.2.3",
     "react": "^16.13.1",
+    "react-app-polyfill": "^1.0.6",
     "react-dom": "^16.13.1",
-    "react-scripts": "3.4.1"
+    "react-id-swiper": "^4.0.0",
+    "react-scripts": "3.4.1",
+    "react-scroll": "^1.7.16",
+    "reactjs-popup": "^1.5.0",
+    "swiper": "^5.4.5"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -23,12 +36,18 @@
     "production": [
       ">0.2%",
       "not dead",
-      "not op_mini all"
+      "not op_mini all",
+      "ie >= 9"
     ],
     "development": [
       "last 1 chrome version",
       "last 1 firefox version",
-      "last 1 safari version"
+      "last 1 safari version",
+      "ie 11"
     ]
+  },
+  "devDependencies": {
+    "babel-polyfill": "^6.26.0",
+    "node-sass": "^4.14.1"
   }
 }

@@ -1,0 +1,91 @@
+@import '../mixins/index.scss';
+
+.nav-bar {
+  .MuiToolbar-gutters {
+    padding: 0;
+  }
+  header {
+    color: black;
+    background-color: white;
+    padding: {
+      left: p2p(60, $size);
+      right: p2p(60, $size);
+    }
+  }
+  .logo {
+    width: p2r(300);
+    height: p2r(100);
+    margin-left: p2r(-10);
+    padding: {
+      left: p2r(10);
+      right: p2r(10);
+    }
+    box-sizing: content-box;
+    max-width: 300px;
+    max-height: 100px;
+    img {
+      width: 100%;
+      display: inline-block;
+      vertical-align: middle;
+    }
+  }
+
+  button {
+    img,
+    svg {
+      position: relative;
+    }
+    .MuiIconButton-label {
+      position: relative;
+    }
+  }
+
+  .nav-links {
+    height: p2r(100);
+    max-height: 100px;
+    font-size: 1rem;
+    margin-right: p2e(25, 16);
+    .nav-link {
+      position: relative;
+      padding: {
+        left: p2e(25, 16);
+        right: p2e(25, 16);
+      }
+      font-size: 1rem;
+      border-radius: 0;
+      box-sizing: border-box;
+      text-transform: none;
+      height: p2r(100);
+      max-height: 100px;
+      @include underLineBarDefault;
+      &.active {
+        @include underLineBar;
+        .MuiButton-label {
+          color: $activeBlue;
+        }
+      }
+      &:hover {
+        @include underLineBar;
+        .MuiButton-label {
+          color: $activeBlue;
+        }
+      }
+    }
+    .active {
+      .nav-link {
+        @include underLineBar;
+        .MuiButton-label {
+          color: $activeBlue;
+        }
+      }
+    }
+  }
+
+  .profile-button {
+    margin-left: -12px;
+  }
+
+  a {
+    text-decoration: none;
+  }
+}

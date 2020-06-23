@@ -1,0 +1,25 @@
+$_extraLarge: 1920px;
+$_large: 1600px;
+$_medium: 1440px;
+$_small: 1280px;
+
+$_tablet: 1024px;
+$_mobile: 768px;
+$_plus: 414px;
+$_normal: 375px;
+$_tiny: 320px;
+
+@function getMediaQuery($size, $option: 'max-width') {
+  @return ($option: $size);
+}
+
+$extraLarge: getMediaQuery($_extraLarge);
+$large: getMediaQuery($_large);
+$medium: getMediaQuery($_medium);
+$small: getMediaQuery($_small);
+
+$tablet: getMediaQuery($_tablet);
+$mobile: getMediaQuery($_mobile);
+$plus: getMediaQuery($_plus);
+$normal: getMediaQuery($_normal);
+$tiny: getMediaQuery($_tiny);

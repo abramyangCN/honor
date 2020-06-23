@@ -1,0 +1,22 @@
+$size: 1440;
+$mobileSize: 768;
+$baseFontSize: 16;
+
+@function p2r($px) {
+  @return $px/$baseFontSize * 1rem;
+}
+
+@function p2e($px, $elementFontSize) {
+  @return $px/$elementFontSize * 1em;
+}
+@function p2p($px, $width) {
+  @return $px/$width * 100%;
+}
+
+@function rootFont($width) {
+  @return $baseFontSize/$size * $width;
+}
+@function mobileRootFont($width) {
+  @return $baseFontSize/$mobileSize * $width;
+}
+

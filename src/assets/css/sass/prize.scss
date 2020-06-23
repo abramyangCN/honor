@@ -1,0 +1,183 @@
+@import '../mixins/index.scss';
+
+.prize {
+  background: none;
+  position: relative;
+  padding-top: p2p(935, 1440);
+  z-index: 10;
+
+  @include media($tablet) {
+    padding-top: p2p(2000, 750);
+  }
+
+  .title {
+    font-size: p2r(50);
+    font-weight: bold;
+    color: white;
+    line-height: 1;
+    text-align: center;
+  }
+
+  p {
+    font-size: p2r(28);
+    color: $paragraph;
+    margin: {
+      top: p2e(16, 28);
+      bottom: p2e(16, 28);
+    }
+  }
+
+  .prize-backgroud {
+    position: absolute;
+    top: p2p(-40, 1440);
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+  }
+
+  .prize-container {
+    position: absolute;
+    margin-top: p2r(100);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+  }
+
+  h3 {
+    color: $darkBlue;
+    font-size: p2r(24);
+  }
+
+  .prize-items {
+    position: relative;
+    width: 100%;
+    margin-top: p2p(80, 1440);
+    display: flex;
+    align-content: center;
+    height: p2r(380);
+    justify-content: center;
+    flex-wrap: nowrap;
+    @include media($tablet) {
+      display: block;
+      height: auto;
+      min-height: p2r(400);
+    }
+  }
+
+  .prize-item {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    justify-content: center;
+    padding: {
+      left: p2r(20);
+      right: p2r(20);
+    }
+    box-sizing: border-box;
+    @include media($tablet) {
+      padding: {
+        left: p2r(30);
+        right: p2r(30);
+      }
+      margin-top: p2r(50);
+    }
+  }
+
+  .prize-card {
+    height: 100%;
+    padding: p2r(40);
+    box-sizing: border-box;
+    border-radius: p2r(20);
+    text-align: center;
+    width: 316px;
+
+    @include media($medium) {
+      width: p2r(300);
+    }
+    @include media($tablet) {
+      width: p2r(340);
+    }
+    h3 {
+      color: $darkBlue;
+      font-weight: bold;
+      font-size: p2r(24);
+      margin-top: p2r(12);
+      @include media($tablet) {
+        font-size: p2r(36);
+      }
+    }
+
+    .subtitle {
+      font-size: p2r(12);
+      font-weight: bold;
+      vertical-align: middle;
+      margin-top: p2r(12);
+      color: black;
+    }
+
+    .description {
+      font-size: p2r(14);
+      margin-top: p2r(20);
+      text-align: center;
+    }
+
+    .honor-badge {
+      margin: 0 auto;
+      @include media($tablet) {
+        width: p2r(150);
+        height: p2r(150);
+      }
+    }
+  }
+
+  .prize-award {
+    width: 0;
+    transition: width 0.3s ease 0.1s;
+    height: 345px;
+    vertical-align: middle;
+
+    @include media($medium) {
+      height: p2r(345 * 0.8);
+    }
+    @include media($tablet) {
+      width: p2r(355);
+      height: p2r(345 * 355 / 380);
+    }
+
+    div {
+      box-sizing: border-box;
+      height: 345px;
+      @include media($medium) {
+        height: p2r(345 * 0.8);
+      }
+
+      @include media($tablet) {
+        width: p2r(355);
+        height: p2r(345 * 355 / 380);
+      }
+    }
+  }
+
+  .prize-award-image {
+    width: 100%;
+    height: 100%;
+  }
+
+  .expand {
+    .prize-award {
+      width: 380px;
+      transition: width 0.3s ease 0.1s;
+      @include media($medium) {
+        width: p2r(380 * 0.8);
+      }
+
+      @include media($tablet) {
+        width: p2r(355);
+        height: p2r(345 * 355 / 380);
+      }
+    }
+  }
+}

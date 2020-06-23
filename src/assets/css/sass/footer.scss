@@ -1,0 +1,35 @@
+@import '../mixins/index.scss';
+
+footer {
+  background: black;
+  padding: p2r(40);
+  color: white;
+  .share-container {
+    text-align: center;
+  }
+
+  .share-link {
+    margin: 0 p2r(30);
+    .MuiIconButton-label {
+      svg {
+        color: white;
+      }
+    }
+  }
+  .copyrights {
+    margin-top: p2r(30);
+  }
+  .copyright {
+    font-size: p2r(14);
+  }
+  .footer-links {
+    text-align: right;
+  }
+  .footer-link {
+    cursor: pointer;
+    font-size: p2r(14);
+    margin: 0 p2r(40);
+    text-align: right;
+    color: white;
+  }
+}

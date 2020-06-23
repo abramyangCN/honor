@@ -1,0 +1,24 @@
+@import '../mixins/index.scss';
+
+#home {
+  padding-top: 100px;
+  @include media($medium) {
+    padding-top: p2r(100);
+  }
+  h1 {
+    font-size: p2r(40);
+    font-weight: bold;
+    color: $titleColor;
+    padding: 0;
+    margin: 0;
+  }
+
+  p {
+    font-size: p2r(28);
+    color: $paragraph;
+    margin: {
+      top: p2e(16, 28);
+      bottom: p2e(16, 28);
+    }
+  }
+}

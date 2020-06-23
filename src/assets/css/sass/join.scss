@@ -1,0 +1,62 @@
+@import '../mixins/index.scss';
+
+.join {
+  background: none;
+  position: relative;
+  padding-top: p2p(1148, 1440);
+  z-index: 9;
+
+  .title {
+    font-size: p2r(50);
+    font-weight: bold;
+    color: white;
+    line-height: 1;
+    text-align: center;
+  }
+
+  p {
+    font-size: p2r(28);
+    color: $paragraph;
+    margin: {
+      top: p2e(16, 28);
+      bottom: p2e(16, 28);
+    }
+  }
+
+  .join-backgroud {
+    position: absolute;
+    top: p2p(-300, 1440);
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+
+    height: 150%;
+  }
+
+  .join-container {
+    position: absolute;
+    margin-top: p2r(100);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+  }
+
+  .steps {
+    padding-top: p2r(30);
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .MuiGrid-item {
+    // max-width: 30%;
+    padding: p2r(30);
+  }
+
+  .timeline {
+    width: 100%;
+    margin-top: p2r(60);
+  }
+}

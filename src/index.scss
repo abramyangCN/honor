@@ -1,0 +1,171 @@
+@import './assets/css/mixins/index.scss';
+
+body,
+html {
+  margin: 0;
+  padding: 0;
+  font-size: rootFont($_extraLarge);
+  @include media($extraLarge) {
+    font-size: rootFont($_extraLarge);
+  }
+  @include media($large) {
+    font-size: rootFont($_large);
+  }
+  @include media($medium) {
+    font-size: $baseFontSize * 1px;
+  }
+  @include media($small) {
+    font-size: rootFont($_small);
+  }
+  @include media($tablet) {
+    font-size: rootFont($_tablet);
+  }
+  @include media($mobile) {
+    font-size: 16px;
+  }
+  @include media($plus) {
+    font-size: mobileRootFont($_plus);
+  }
+  @include media($normal) {
+    font-size: mobileRootFont($_normal);
+  }
+  @include media($tiny) {
+    font-size: mobileRootFont($_tiny);
+  }
+}
+
+h2 {
+  position: relative;
+}
+.title-bullets {
+  position: relative;
+  margin-top: p2r(20);
+  text-align: center;
+  height: p2r(6);
+  line-height: 0;
+  .title-bullet {
+    display: inline-block;
+    width: p2r(6);
+    height: p2r(6);
+    margin: 0 p2r(5);
+    background-color: $blue;
+    &:nth-child(1) {
+      background-color: $yellow;
+    }
+    &:nth-child(2) {
+      background-color: $green;
+    }
+    &:nth-child(3) {
+      background-color: $red;
+    }
+  }
+}
+
+.honor-badge {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  &-container {
+    width: p2p(82, 150);
+    height: p2p(78, 150);
+    @include absoluteCenter;
+    z-index: 10;
+  }
+  &-shield {
+    @include absoluteCenter;
+    width: 100%;
+    height: 100%;
+  }
+
+  &-content {
+    @include absoluteCenter;
+    display: inline-block;
+    text-align: center;
+    font-size: p2r(38);
+    color: $darkBlue;
+    font-weight: bold;
+    line-height: 1;
+    top: p2p(28, 72);
+  }
+
+  &-stars {
+    @include absoluteCenter;
+    line-height: 0;
+    top: auto;
+    transform: translateX(-50%);
+    width: p2p(65, 82);
+    bottom: p2p(10, 78);
+  }
+
+  img {
+    width: 100%;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    border-radius: 50%;
+    opacity: 0.55;
+    background-color: #d9b08c;
+    z-index: 0;
+  }
+
+  &::after {
+    content: '';
+    width: p2p(134, 150);
+    height: p2p(134, 150);
+    border-radius: 50%;
+    opacity: 0.3;
+    @include absoluteCenter;
+    background-color: #dfd2fa;
+    z-index: 1;
+  }
+}
+
+.terms-cookies {
+  height: 80vh;
+  padding: p2r(40);
+}
+
+.terms-cookies-paper {
+  overflow: auto;
+  height: 100%;
+  text-align: left;
+
+  h4 {
+    font-size: p2r(22);
+    margin: {
+      top: p2r(20);
+      bottom: p2r(20);
+    }
+    color: $titleColor;
+  }
+  p {
+    font-size: p2r(14);
+    margin: {
+      top: p2r(20);
+      bottom: p2r(20);
+    }
+    color: $titleColor;
+  }
+}
+
+.popup-overlay {
+  z-index: 9999 !important;
+}
+
+.popup-content {
+  border-radius: p2r(20);
+  padding: p2r(40);
+  a.close {
+    position: absolute;
+    font-size: 2rem;
+    right: 1rem;
+    cursor: pointer;
+    color: black;
+  }
+}
