@@ -1,15 +1,31 @@
 @import './assets/css/mixins/index.scss';
 
 @font-face {
-  font-family: Avenir_Next;
-  src: url(./assets/css/fonts/Avenir_Next.eot);
-  src: url(./assets/css/fonts/Avenir_Next.eot?hqtb4h#iefix)
+  font-family: avenirnext;
+  src: url(./assets/css/fonts/avenirnext-regular.eot);
+  src: url(./assets/css/fonts/avenirnext-regular.eot?hqtb4h#iefix)
       format('embedded-opentype'),
-    url(./assets/css/fonts/Avenir_Next.ttf) format('truetype'),
-    url(./assets/css/fonts/Avenir_Next.woff) format('woff'),
-    url(./assets/css/fonts/Avenir_Next.svg) format('svg');
-  font-weight: 400;
+    url(./assets/css/fonts/avenirnext-regular.ttf) format('truetype'),
+    url(./assets/css/fonts/avenirnext-regular.woff) format('woff'),
+    url(./assets/css/fonts/avenirnext-regular.svg) format('svg');
+  font-weight: normal;
   font-style: normal;
+}
+
+@font-face {
+  font-family: avenirnext;
+  src: url(./assets/css/fonts/avenirnext-bold.eot);
+  src: url(./assets/css/fonts/avenirnext-bold.eot?hqtb4h#iefix)
+      format('embedded-opentype'),
+    url(./assets/css/fonts/avenirnext-bold.ttf) format('truetype'),
+    url(./assets/css/fonts/avenirnext-bold.woff) format('woff'),
+    url(./assets/css/fonts/avenirnext-bold.svg) format('svg');
+  font-weight: bold;
+  font-style: normal;
+}
+
+* {
+  font-family: 'avenirnext', 'sans-serif' !important;
 }
 
 body,
@@ -17,7 +33,7 @@ html {
   margin: 0;
   padding: 0;
   font-size: rootFont($_extraLarge);
-  font-family: 'Avenir_Next', 'sans-serif';
+  font-family: 'avenirnext', 'sans-serif';
   @include media($extraLarge) {
     font-size: rootFont($_extraLarge);
   }

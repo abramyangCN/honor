@@ -49,8 +49,19 @@ const Footer = (props) => {
         <Grid className='copyrights' container>
           <Grid item xs='6'>
             <Typography className='copyright'>
-              Copyright @Huawei Telecommunications (India) Co. Pvt. Ltd.
-              2015-2018. All rights reserved.
+              <div class='copyright'>
+                Copyright ©2020 Huawei Device Co., Ltd.
+                <Link
+                  target='_blank'
+                  href='http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44190002004111'
+                >
+                  <img src='https://www.hihonor.com/content/dam/honor/common/social-icons/ghs.png' />
+                  <span>粤公网安备 44190002004111号 </span>
+                </Link>
+                <Link target='_blank' href='http://www.beian.miit.gov.cn'>
+                  <span> 粤ICP备19015064号</span>
+                </Link>
+              </div>
             </Typography>
           </Grid>
           <Grid className='footer-links' item xs='6'>

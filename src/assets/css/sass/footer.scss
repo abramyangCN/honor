@@ -31,5 +31,13 @@ footer {
     margin: 0 p2r(40);
     text-align: right;
     color: white;
+    font-weight: normal;
+  }
+  a,
+  .MuiLink-underlineHover {
+    color: white;
+    span {
+      color: white;
+    }
   }
 }
