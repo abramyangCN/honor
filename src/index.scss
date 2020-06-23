@@ -1,10 +1,23 @@
 @import './assets/css/mixins/index.scss';
 
+@font-face {
+  font-family: Avenir_Next;
+  src: url(./assets/css/fonts/Avenir_Next.eot);
+  src: url(./assets/css/fonts/Avenir_Next.eot?hqtb4h#iefix)
+      format('embedded-opentype'),
+    url(./assets/css/fonts/Avenir_Next.ttf) format('truetype'),
+    url(./assets/css/fonts/Avenir_Next.woff) format('woff'),
+    url(./assets/css/fonts/Avenir_Next.svg) format('svg');
+  font-weight: 400;
+  font-style: normal;
+}
+
 body,
 html {
   margin: 0;
   padding: 0;
   font-size: rootFont($_extraLarge);
+  font-family: 'Avenir_Next', 'sans-serif';
   @include media($extraLarge) {
     font-size: rootFont($_extraLarge);
   }

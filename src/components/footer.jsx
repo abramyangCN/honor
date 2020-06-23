@@ -1,11 +1,8 @@
 import React from 'react';
 import Box from '@material-ui/core/Box';
-import Icon from '@material-ui/core/Icon';
 import Grid from '@material-ui/core/Grid';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
-import TermsCookies from '../utils/TermsCookies';
-import Popup from 'reactjs-popup';
 import Link from '@material-ui/core/Link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebookF } from '@fortawesome/free-brands-svg-icons';
@@ -20,16 +17,32 @@ const Footer = (props) => {
     <footer className='footer'>
       <Box className='footer-container'>
         <Box className='share-container'>
-          <IconButton className='share-link'>
+          <IconButton
+            className='share-link'
+            href='//www.facebook.com/honorglobal'
+            target='_blank'
+          >
             <FontAwesomeIcon icon={faFacebookF} />
-          </IconButton>{' '}
-          <IconButton className='share-link'>
+          </IconButton>
+          <IconButton
+            className='share-link'
+            href='//www.twitter.com/Honorglobal'
+            target='_blank'
+          >
             <FontAwesomeIcon icon={faTwitter} />
           </IconButton>
-          <IconButton className='share-link'>
+          <IconButton
+            className='share-link'
+            href='//www.instagram.com/honorglobal'
+            target='_blank'
+          >
             <FontAwesomeIcon icon={faInstagram} />
           </IconButton>
-          <IconButton className='share-link'>
+          <IconButton
+            className='share-link'
+            href='//www.youtube.com/c/HonorOfficial'
+            target='_blank'
+          >
             <FontAwesomeIcon icon={faYoutube} />
           </IconButton>
         </Box>
@@ -41,41 +54,31 @@ const Footer = (props) => {
             </Typography>
           </Grid>
           <Grid className='footer-links' item xs='6'>
-            <Popup
-              trigger={<Link className='footer-link'>Terms of use</Link>}
-              modal
-              closeOnDocumentClick
+            <Link
+              className='footer-link'
+              href='//www.hihonor.com/global/terms-of-use/'
             >
-              {(close) => (
-                <div className='modal'>
-                  <a className='close' onClick={close}>
-                    &times;
-                  </a>
-                  <TermsCookies></TermsCookies>
-                </div>
-              )}
-            </Popup>
-
-            <Link className='footer-link' href='//google.com'>
+              Terms Of Use
+            </Link>
+            <Link
+              className='footer-link'
+              href='//www.hihonor.com/global/privacy-policy/'
+            >
               Privacy
             </Link>
-            <Link className='footer-link' href='//google.com'>
-              Statement
-            </Link>
-            <Popup
-              trigger={<Link className='footer-link'>Cookies</Link>}
-              modal
-              closeOnDocumentClick
+            <Link
+              className='footer-link'
+              href='//www.hihonor.com/global/cookie-statement/'
             >
-              {(close) => (
-                <div className='modal'>
-                  <a className='close' onClick={close}>
-                    &times;
-                  </a>
-                  <TermsCookies></TermsCookies>
-                </div>
-              )}
-            </Popup>
+              Cookies
+            </Link>
+
+            <Link
+              className='footer-link'
+              href='//www.hihonor.com/global/legal/privacy-questions/worldwide/'
+            >
+              Legal
+            </Link>
           </Grid>
         </Grid>
       </Box>
