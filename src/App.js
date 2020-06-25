@@ -1,5 +1,8 @@
 /* eslint-disable no-useless-constructor */
 import React, { Component } from 'react';
+import cookies from 'react-cookies';
+import { Events, scrollSpy } from 'react-scroll';
+
 import Header from './components/header';
 import HeroBanner from './components/herobanner';
 import Prize from './components/prize';
@@ -7,11 +10,9 @@ import Prize from './components/prize';
 import Join from './components/join';
 import Judge from './components/judge';
 import Footer from './components/footer';
-
-import { Events, scrollSpy } from 'react-scroll';
+import { isLogin } from './plugin/login';
 
 import './App.css';
-
 
 const data = [
   {
@@ -42,10 +43,14 @@ const data = [
   { id: '5', title: 'T&C', hrefLink: 'tc', isAnchor: false },
 ];
 
+let cookieInfo = cookies.loadAll();
 
 class App extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      cookie: {},
+    };
   }
 
   componentDidMount() {
@@ -58,16 +63,31 @@ class App extends Component {
     });
 
     scrollSpy.update();
+
+    console.log(cookieInfo);
+
+    this.setState({ cookie: cookieInfo, isLogin: isLogin() });
+
+    if (isLogin()) {
+    }
+  }
+
+  getUserInfo() {
+    console.log(this.state.cookie);
   }
 
   render() {
     return (
       <React.Fragment>
-        <Header data={data} />
+        <Header
+          data={data}
+          isLogin={isLogin()}
+          username={this.state.cookie.displayName}
+        />
         <HeroBanner style={{ marginTop: '6.25rem' }} />
         <Prize />
         {/* <Tutorial /> */}
-        <Join />
+        <Join username={this.state.cookie.displayName} userid={''} />
         <Judge />
         <Footer />
       </React.Fragment>

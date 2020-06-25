@@ -17,6 +17,8 @@ import Popup from 'reactjs-popup';
 
 import TermsCookies from '../utils/TermsCookies';
 
+import { loginBtn } from '../plugin/login';
+
 const useStyles = makeStyles((theme) => ({
   grow: {
     flexGrow: 1,
@@ -88,7 +90,7 @@ export default function Header(props) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
-  const { data } = props;
+  const { data, username, isLogin } = props;
 
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
@@ -106,6 +108,10 @@ export default function Header(props) {
     handleMobileMenuClose();
   };
 
+  const logout = () => {
+    window.location.href = `//cuep-sg.hihonor.com/abroad/auth/logout?cururl=${window.location.href}`;
+  };
+
   const handleMobileMenuOpen = (event) => {
     setMobileMoreAnchorEl(event.currentTarget);
   };
@@ -121,11 +127,25 @@ export default function Header(props) {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      {/* {data.map(({ id, title, link }) => (
-        <MenuItem key={id} onClick={handleMenuClose}>
-          {title}
+      <MenuItem
+        onClick={() => {
+          console.log(isLogin);
+          !isLogin && loginBtn();
+          handleMenuClose();
+        }}
+      >
+        {isLogin ? username : `Login`}
+      </MenuItem>
+      {isLogin && (
+        <MenuItem
+          onClick={() => {
+            handleMenuClose();
+            logout();
+          }}
+        >
+          Logout
         </MenuItem>
-      ))} */}
+      )}
     </Menu>
   );
 
@@ -253,7 +273,7 @@ export default function Header(props) {
               className={`profile-button`}
               color='inherit'
             >
-              {/* <AccountCircle /> */}
+              <AccountCircle />
             </IconButton>
           </div>
           <div className={classes.sectionMobile}>
@@ -271,13 +291,7 @@ export default function Header(props) {
       </AppBar>
       {renderMobileMenu}
       {renderMenu}
-      <Popup
-        open={openPopup}
-        closeOnDocumentClick
-        onClose={closeModal}
-        modal
-        closeOnDocumentClick
-      >
+      <Popup open={openPopup} closeOnDocumentClick onClose={closeModal} modal>
         <div className='popup-modal'>
           <a className='close' onClick={closeModal}>
             &times;
