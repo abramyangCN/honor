@@ -105,7 +105,9 @@ const Join = ({ isLogin, countryList }) => {
     formdata.append('userCountries', country);
     formdata.append('imgCountries', 'gallery');
     formdata.append('activityName', 'MICROSOFT_365');
+
     axios.defaults.withCredentials = true;
+    axios.defaults.crossDomain = true;
 
     if (workType === 'photo') {
       formdata.append('file', file[0]);
@@ -187,26 +189,30 @@ const Join = ({ isLogin, countryList }) => {
 
             promiseImg.then(({ fileName, imgsrc }) => {
               console.log(`generating ${fileName} and ${imgsrc} `);
+
+              let formdataVideo = {
+                imgContent: workTitle,
+                userCountries: country,
+                imgCountries: 'gallery',
+                activityName: 'MICROSOFT_365',
+                imageNames: fileName,
+                coverPicture: imgsrc,
+              };
+
               formdata.append('imageNames', fileName);
               formdata.append('coverPicture', imgsrc);
-              // axios.post(
-              //   `//${apiHost}/abroad/shootMatch/submitObsVideo`,
-              //   formdata,
-              //   {
-              //     headers: {
-              //       'Content-Type': 'application/x-www-form-urlencoded',
-              //     },
-              //   }
-              // );
 
-              axios({
-                method: 'post',
-                url: `//${apiHost}/abroad/shootMatch/submitObsVideo`,
-                data: formdata,
-                headers: {
-                  'Content-type': 'application/x-www-form-urlencoded',
-                },
-              })
+              const headers = {
+                'Content-Type':
+                  'application/x-www-form-urlencoded;charset=UTF-8',
+              };
+
+              axios
+                .post(
+                  `//${apiHost}/abroad/shootMatch/submitObsVideo`,
+                  qs.stringify(formdataVideo),
+                  headers
+                )
                 .then(function (response) {
                   console.log(response);
 
@@ -319,7 +325,7 @@ const Join = ({ isLogin, countryList }) => {
           {!isLogin ? `Login to Join` : `Join Now`}
         </Button>
 
-        <div id='videoPreview' className='preview-box' data-ratio='0.3'>
+        <div id='videoPreview' className='preview-box' data-ratio='0.1'>
           <input
             type='hidden'
             id='videoImg'

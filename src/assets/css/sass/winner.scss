@@ -79,6 +79,9 @@
       video {
         width: 100%;
       }
+      img {
+        width: 100%;
+      }
       .video-play-button {
         @include absoluteCenter;
         border-radius: 100%;
@@ -145,6 +148,12 @@
     padding: {
       top: p2r(20);
       bottom: p2r(20);
+    }
+  }
+
+  .first-swiper {
+    .swiper-slide-prev{
+      opacity: 0;
     }
   }
 
