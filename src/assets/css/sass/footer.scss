@@ -65,7 +65,7 @@ footer {
         flex-basis: 100%;
         margin-top: p2r(20);
         .copyright {
-          font-size: p2r(28);
+          font-size: p2r(14);
           text-align: center;
         }
       }
@@ -83,6 +83,9 @@ footer {
       font-size: p2r(28);
       .MuiButton-iconSizeLarge > *:first-child {
         font-size: p2r(38);
+      }
+      .honor-club {
+        height: p2r(32);
       }
     }
   }

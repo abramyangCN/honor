@@ -5,7 +5,7 @@
   position: relative;
   padding-top: p2p(761, 1440);
   z-index: 9;
-  background: #000;
+  background: #141414;
   .title {
     font-size: p2r(50);
     font-weight: bold;
@@ -45,7 +45,7 @@
 
   .judge-container {
     position: absolute;
-    margin-top: p2r(100);
+    margin-top: p2r(140);
     top: 0;
     left: 0;
     width: 100%;
@@ -169,6 +169,17 @@
       font-size: p2r(75);
     }
 
+    h3 {
+      font-size: p2r(32);
+      font-weight: bold;
+    }
+
+    h5 {
+      font-size: p2r(28);
+      color: $titleColor;
+      margin-top: p2r(20);
+    }
+
     .judge-container {
       position: relative;
       box-sizing: border-box;
@@ -202,6 +213,8 @@
 
     .swiper-card-container {
       width: p2r(580);
+
+      height: p2r(500);
       .swiper-card-inner {
         .avatar-container {
           left: 50%;

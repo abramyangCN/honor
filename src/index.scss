@@ -64,6 +64,10 @@ html {
   }
 }
 
+p {
+  margin: 0;
+}
+
 h2 {
   position: relative;
 }
@@ -157,16 +161,21 @@ h2 {
 }
 
 .terms-cookies {
+  position: relative;
+  width: 100%;
   height: 80vh;
+  box-sizing: border-box;
   padding: p2r(40);
 }
 
 .terms-cookies-paper {
+  width: 100%;
   overflow: auto;
   height: 100%;
   text-align: left;
 
   h4 {
+    width: 100%;
     font-size: p2r(22);
     margin: {
       top: p2r(20);
@@ -174,13 +183,29 @@ h2 {
     }
     color: $titleColor;
   }
-  p {
+  .tc-description {
+    position: relative;
+    width: 100%;
     font-size: p2r(14);
     margin: {
       top: p2r(20);
       bottom: p2r(20);
     }
     color: $titleColor;
+    a {
+      font-size: p2r(14);
+      width: 100%;
+    }
+  }
+
+  @include media($tablet) {
+    h4 {
+      font-size: p2r(36);
+      font-weight: bold;
+    }
+    .tc-description {
+      font-size: p2r(28);
+    }
   }
 }
 
@@ -203,6 +228,10 @@ h2 {
   }
 }
 
+.popup-modal {
+  width: 100%;
+}
+
 .popup-content .modal {
   position: relative !important;
   top: 0;
@@ -218,4 +247,44 @@ a {
   &:focus {
     outline: none;
   }
+}
+
+.preview-box {
+  display: block;
+  margin: 0 auto;
+  width: 100%;
+  text-align: center;
+  overflow: hidden;
+  position: relative;
+  display: none;
+}
+
+.hidden {
+  display: none !important;
+}
+
+#currVideo {
+  width: 100%;
+  max-height: 500px;
+}
+
+.video-popup {
+  .MuiDialog-paper {
+    max-width: none;
+    width: 60%;
+    margin: 0;
+    @include media($tablet) {
+      width: 100%;
+    }
+    .MuiDialogContent-root {
+      padding: 0;
+    }
+  }
+  video {
+    width: 100%;
+  }
+}
+
+video {
+  display: block;
 }

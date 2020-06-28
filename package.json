@@ -14,8 +14,10 @@
     "@testing-library/user-event": "^7.1.2",
     "axios": "^0.19.2",
     "ismobilejs": "^1.1.1",
+    "jquery": "^3.5.1",
     "material-ui-dropzone": "^3.3.0",
     "material-ui-image": "^3.2.3",
+    "qs": "^6.9.4",
     "react": "^16.13.1",
     "react-app-polyfill": "^1.0.6",
     "react-axios": "^2.0.3",
@@ -53,6 +55,7 @@
   },
   "devDependencies": {
     "babel-polyfill": "^6.26.0",
+    "http-proxy-middleware": "^1.0.4",
     "node-sass": "^4.14.1"
   }
 }

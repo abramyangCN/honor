@@ -3,7 +3,7 @@
 .join-wrap {
   background: none;
   position: relative;
-  padding-top: p2p(1148, 1440);
+  padding-top: p2p(1300, 1440);
   z-index: 9;
 
   .title {
@@ -25,7 +25,7 @@
 
   .join-backgroud {
     position: absolute;
-    top: p2p(-300, 1440);
+    top: p2p(-150, 1440);
     left: 0;
     width: 100%;
     height: 100%;
@@ -36,12 +36,13 @@
 
   .join-container {
     position: absolute;
-    margin-top: p2r(100);
+    margin-top: p2r(140);
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     z-index: 10;
+    overflow: hidden;
   }
 
   .steps {
@@ -58,6 +59,16 @@
   .timeline {
     width: 100%;
     margin-top: p2r(60);
+  }
+
+  .join-button {
+    color: white;
+    border-color: white;
+    font-size: p2r(24);
+    border-radius: p2r(24);
+    display: block;
+    margin: 0 auto;
+    margin-top: p2r(50);
   }
 
   @include media($tablet) {
@@ -112,6 +123,102 @@
       padding: p2r(40);
       box-sizing: border-box;
     }
-    
+  }
+}
+
+.upload-dropzone {
+  &.MuiDropzoneArea-root {
+    background-color: #f0f0f0;
+    margin-top: p2r(20);
+    border-radius: p2r(10);
+  }
+  .MuiDropzoneArea-textContainer {
+    p {
+      font-size: p2r(14);
+    }
+  }
+  .MuiDropzonePreviewList-imageContainer {
+    flex-basis: 100%;
+    max-width: 100%;
+  }
+
+
+  &.upload-dropzone-error {
+    .MuiDropzoneArea-textContainer {
+      p {
+        color: red;
+      }
+    }
+  }
+}
+
+.upload-dialog {
+
+  .MuiSnackbar-root {
+    @include media($tablet) {
+      position: absolute;
+    }
+  }
+
+  .MuiDialog-container {
+    > div:first-child {
+      padding: p2r(20);
+      max-width: 700px;
+      flex-basis: 100%;
+    }
+  }
+
+  #form-dialog-title {
+    h2 {
+      text-align: center;
+    }
+  }
+
+  .input-item {
+    background: #f0f0f0;
+    border-radius: p2r(10);
+    margin-top: p2r(20);
+    box-sizing: border-box;
+    padding: p2r(10) p2r(20);
+
+    &::before {
+      content: none;
+    }
+  }
+
+  .input-text {
+    background: #f0f0f0;
+    border-radius: p2r(10);
+    margin-top: p2r(20);
+    box-sizing: border-box;
+    .MuiInputBase-root {
+      padding: p2r(10) p2r(20);
+      &::before {
+        content: none;
+      }
+    }
+    label {
+      left: p2r(20);
+    }
+  }
+
+  .MuiInput-underline:after {
+    background-color: $activeBlue;
+  }
+
+  .MuiDialogActions-root {
+    justify-content: center;
+    .MuiButtonBase-root {
+      color: $titleColor;
+      background: #f0f0f0;
+    }
+    .MuiButton-label {
+      color: $titleColor;
+    }
+  }
+
+  .title h2 {
+    font-size: p2r(36);
+    font-weight: bold;
   }
 }

@@ -17,7 +17,7 @@ import Popup from 'reactjs-popup';
 
 import TermsCookies from '../utils/TermsCookies';
 
-import { loginBtn } from '../plugin/login';
+import { loginBtn, apiHost } from '../plugin/login';
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -109,7 +109,7 @@ export default function Header(props) {
   };
 
   const logout = () => {
-    window.location.href = `//cuep-sg.hihonor.com/abroad/auth/logout?cururl=${window.location.href}`;
+    window.location.href = `//${apiHost}/abroad/auth/logout?cururl=${window.location.href}`;
   };
 
   const handleMobileMenuOpen = (event) => {
@@ -125,6 +125,7 @@ export default function Header(props) {
       keepMounted
       transformOrigin={{ vertical: 'top', horizontal: 'right' }}
       open={isMenuOpen}
+      className={'mobile-menu'}
       onClose={handleMenuClose}
     >
       <MenuItem
@@ -134,7 +135,7 @@ export default function Header(props) {
           handleMenuClose();
         }}
       >
-        {isLogin ? username : `Login`}
+        <p>{isLogin ? username : `Login`}</p>
       </MenuItem>
       {isLogin && (
         <MenuItem
@@ -143,7 +144,7 @@ export default function Header(props) {
             logout();
           }}
         >
-          Logout
+          <p>Logout</p>
         </MenuItem>
       )}
     </Menu>
@@ -263,7 +264,7 @@ export default function Header(props) {
               return null;
             })}
           </div>
-          <div className={classes.sectionDesktop}>
+          <div className={`${classes.sectionDesktop} account-login`}>
             <IconButton
               edge='end'
               aria-label='account of current user'

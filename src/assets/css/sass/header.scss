@@ -115,5 +115,24 @@
         overflow: visible !important;
       }
     }
+
+    .account-login {
+      display: inline-flex;
+      position: absolute;
+      left: p2r(20);
+      button {
+        svg {
+          font-size: p2r(36);
+        }
+      }
+    }
+  }
+}
+
+.mobile-menu {
+  @include media($tablet) {
+    p {
+      font-size: p2r(36);
+    }
   }
 }

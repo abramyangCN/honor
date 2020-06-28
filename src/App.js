@@ -6,12 +6,15 @@ import { Events, scrollSpy } from 'react-scroll';
 import Header from './components/header';
 import HeroBanner from './components/herobanner';
 import Prize from './components/prize';
-// import Tutorial from './components/tutorial';
+import Tutorial from './components/tutorial';
+import Winner from './components/winner';
 import Join from './components/join';
 import Judge from './components/judge';
 import Footer from './components/footer';
 import { isLogin } from './plugin/login';
+import axios from 'axios';
 
+import { apiHost } from './plugin/login';
 import './App.css';
 
 const data = [
@@ -22,12 +25,12 @@ const data = [
     isAnchor: true,
   },
   { id: '1', title: 'Prize', link: 'prize', isAnchor: true },
-  // {
-  //   id: '2',
-  //   title: 'Tutorial Video',
-  //   link: 'tutorial',
-  //   isAnchor: true,
-  // },
+  {
+    id: '2',
+    title: 'Tutorial Video',
+    link: 'tutorial',
+    isAnchor: true,
+  },
   {
     id: '3',
     title: 'How To Join',
@@ -40,7 +43,13 @@ const data = [
     link: 'judge',
     isAnchor: true,
   },
-  { id: '5', title: 'T&C', hrefLink: 'tc', isAnchor: false },
+  {
+    id: '5',
+    title: 'Winner',
+    link: 'winner',
+    isAnchor: true,
+  },
+  { id: '6', title: 'T&C', hrefLink: 'tc', isAnchor: false },
 ];
 
 let cookieInfo = cookies.loadAll();
@@ -50,6 +59,7 @@ class App extends Component {
     super(props);
     this.state = {
       cookie: {},
+      countryList: [],
     };
   }
 
@@ -64,12 +74,19 @@ class App extends Component {
 
     scrollSpy.update();
 
-    console.log(cookieInfo);
-
     this.setState({ cookie: cookieInfo, isLogin: isLogin() });
 
-    if (isLogin()) {
-    }
+    axios
+      .get(
+        `//${apiHost}/abroad/shootMatch/galleryCountriesList?activityName=global_all_gallery`
+      )
+      .then((response) => {
+        console.log(response);
+        this.setState({ countryList: response.data.infoBean });
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   }
 
   getUserInfo() {
@@ -86,9 +103,10 @@ class App extends Component {
         />
         <HeroBanner style={{ marginTop: '6.25rem' }} />
         <Prize />
-        {/* <Tutorial /> */}
-        <Join username={this.state.cookie.displayName} userid={''} />
+        <Tutorial />
+        <Join isLogin={isLogin()} countryList={this.state.countryList} />
         <Judge />
+        <Winner />
         <Footer />
       </React.Fragment>
     );

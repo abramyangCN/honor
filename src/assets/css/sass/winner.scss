@@ -1,0 +1,181 @@
+@import '../mixins/index.scss';
+
+.winner-wrap {
+  background: none;
+  position: relative;
+  z-index: 9;
+  background: #141414 url('../../images/icons/bg.png') no-repeat;
+  background-size: 100% 100%;
+  overflow: hidden;
+  .title {
+    font-size: p2r(50);
+    font-weight: bold;
+    color: white;
+    line-height: 1;
+    text-align: center;
+  }
+
+  p {
+    font-size: p2r(28);
+    color: $paragraph;
+    margin: {
+      top: p2e(16, 28);
+      bottom: p2e(16, 28);
+    }
+  }
+
+  h3 {
+    font-size: p2r(28);
+    font-weight: bold;
+  }
+
+  h5 {
+    font-size: p2r(14);
+    color: $titleColor;
+  }
+
+  .winner-container {
+    margin-top: p2r(140);
+    padding-bottom: p2p(250, 1440);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    z-index: 10;
+    box-sizing: border-box;
+  }
+
+  .swiper-container {
+    margin-top: p2p(90, 1440);
+    width: p2r(1024);
+
+    @include media($tablet) {
+      margin-top: p2p(90, 750);
+    }
+  }
+  .swiper-wrapper {
+    align-items: center;
+  }
+
+  .swiper-slide {
+    transform: scale(0.7);
+    width: p2r(556);
+    margin: {
+      left: p2r(0);
+      right: p2r(0);
+    }
+    transition: all 0.3s ease 0.2s;
+  }
+
+  .swiper-card-container {
+    width: 100%;
+    box-sizing: border-box;
+    position: relative;
+    border-radius: p2r(20);
+    overflow: hidden;
+    .card-video-thumb {
+      position: relative;
+      padding: 0;
+      video {
+        width: 100%;
+      }
+      .video-play-button {
+        @include absoluteCenter;
+        border-radius: 100%;
+        background: white;
+        color: black;
+        padding: p2r(20);
+        svg {
+          font-size: p2r(28);
+        }
+      }
+    }
+  }
+
+  .swiper-slide-prev {
+    margin: {
+      left: p2r(250);
+      right: p2r(-250);
+    }
+  }
+  .swiper-slide-next {
+    margin: {
+      left: p2r(-250);
+      right: p2r(250);
+    }
+  }
+
+  .swiper-slide-active {
+    transform: scale(1);
+    transition: all 0.3s ease 0.2s;
+    z-index: 99;
+  }
+
+  .honor-badge {
+    margin: 0 auto;
+    margin-top: p2p(90, 1440);
+
+    &::before {
+      background: rgba($color: white, $alpha: 0.2);
+    }
+
+    &::after {
+      background: rgba($color: white, $alpha: 0.6);
+    }
+
+    @include media($tablet) {
+      width: p2r(150);
+      margin-top: p2p(90, 750);
+      height: p2r(150);
+    }
+  }
+
+  .winner-name {
+    padding: {
+      top: p2r(20);
+      bottom: p2r(20);
+    }
+
+    h3 {
+      padding: 0 p2r(20);
+    }
+  }
+
+  .winner-description {
+    padding: {
+      top: p2r(20);
+      bottom: p2r(20);
+    }
+  }
+
+  @include media($tablet) {
+    z-index: 5;
+    padding-top: 0;
+    padding-bottom: p2r(500);
+    @include media($mobile) {
+      padding-bottom: p2r(100);
+    }
+    .title {
+      font-size: p2r(75);
+    }
+
+    .winner-container {
+      position: relative;
+      box-sizing: border-box;
+    }
+    .swiper-container {
+      width: 100%;
+    }
+
+    h3 {
+      font-size: p2r(36);
+      font-weight: bold;
+    }
+
+    h5 {
+      font-size: p2r(28);
+      color: $titleColor;
+      margin-top: p2r(20);
+    }
+  }
+}

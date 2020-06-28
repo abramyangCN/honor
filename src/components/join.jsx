@@ -10,15 +10,20 @@ import Paper from '@material-ui/core/Paper';
 import isMobile from 'ismobilejs';
 import TextField from '@material-ui/core/TextField';
 import Dialog from '@material-ui/core/Dialog';
+import DialogContent from '@material-ui/core/DialogContent';
 import DialogActions from '@material-ui/core/DialogActions';
 import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
-import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import { DropzoneArea } from 'material-ui-dropzone';
 import { AttachFile } from '@material-ui/icons';
 import TitleBullets from '../utils/TitleBullets';
 import axios from 'axios';
+import $ from 'jquery';
+import qs from 'qs';
+
+import { loginBtn, apiHost, HONOROBSSDK } from '../plugin/login';
 
 import bgImage from '../assets/images/join/join_bg.png';
 import step01 from '../assets/images/join/step01.png';
@@ -31,13 +36,33 @@ import '../assets/css/sass/join.scss';
 
 const isMob = isMobile().phone;
 
-const Join = ({ username = '', userid = '' }) => {
+const Join = ({ isLogin, countryList }) => {
   const [open, setOpen] = React.useState(false);
-  const [file, setFile] = React.useState('false');
+  const [uploadSuccessful, setUploadSuccessful] = React.useState(1);
+  const [uploadResult, setUploadResult] = React.useState(false);
 
-  const [age, setAge] = React.useState('');
+  const [file, setFile] = React.useState(false);
+  const [isUploading, setIsUploading] = React.useState(false);
+
+  const [workTitle, setWorkTitle] = React.useState('');
+
+  const [country, setCountry] = React.useState('0');
+
+  const [workType, setWorkType] = React.useState('photo');
+  const [workTitleError, setWorkTitleError] = React.useState(false);
+  const [countryError, setCountryError] = React.useState(false);
+  const [fileError, setFileError] = React.useState(false);
+
   const handleChange = (event) => {
-    setAge(event.target.value);
+    setCountry(event.target.value);
+  };
+
+  const handleWorkTitleChange = (event) => {
+    setWorkTitle(event.target.value);
+  };
+
+  const handleTypeChange = (event) => {
+    setWorkType(event.target.value);
   };
 
   const handleClickOpen = () => {
@@ -47,24 +72,190 @@ const Join = ({ username = '', userid = '' }) => {
 
   const handleClose = () => {
     setOpen(false);
+    setUploadResult(false);
   };
 
   const uploadWorks = () => {
-    let formdata = new FormData();
-    formdata.append('file', file[0]);
+    setWorkTitleError(false);
+    setCountryError(false);
+    setFileError(false);
 
-    // activityName: 'MICROSOFT_365',
-    axios
-      .post(
-        '//cuep-sg.test.hihonor.com/abroad/shootMatch/uploadOriginImage',
-        formdata
-      )
-      .then(function (response) {
-        console.log(response);
-      })
-      .catch(function (error) {
-        console.log(error);
+    if (workTitle === '') {
+      setWorkTitleError(true);
+      return;
+    }
+
+    if (country === '0') {
+      setCountryError(true);
+      return;
+    }
+
+    console.log(file.length);
+
+    if (file.length === 0) {
+      setFileError(true);
+      console.log(fileError);
+      return;
+    }
+
+    setIsUploading(true);
+    let formdata = null;
+    formdata = new FormData();
+    formdata.append('imgContent', workTitle);
+    formdata.append('userCountries', country);
+    formdata.append('imgCountries', 'gallery');
+    formdata.append('activityName', 'MICROSOFT_365');
+    axios.defaults.withCredentials = true;
+
+    if (workType === 'photo') {
+      formdata.append('file', file[0]);
+      console.log(formdata);
+
+      console.log('this is a image');
+      axios
+        .post(`//${apiHost}/abroad/shootMatch/uploadOriginImage`, formdata)
+        .then(function (response) {
+          console.log(response);
+          handleClose();
+          setUploadSuccessful(1);
+
+          if (response.data.code === '400') {
+            setUploadSuccessful(0);
+          }
+          if (response.data.code === '100007') {
+            setUploadSuccessful(2);
+          }
+          setIsUploading(false);
+          setCountry('0');
+          setWorkTitle('');
+          setWorkType('photo');
+          setUploadResult(true);
+          formdata = null;
+        })
+        .catch(function (error) {
+          console.log(error);
+          setUploadSuccessful(0);
+          handleClose();
+          setUploadResult(true);
+          setIsUploading(false);
+          formdata = null;
+        });
+    } else {
+      console.log('this is a video');
+
+      let fileData = new File([file[0]], new Date().getTime() + file[0].name, {
+        type: file[0].type,
       });
+
+      let fileName = fileData.name;
+
+      HONOROBSSDK.init(
+        `//${apiHost}`,
+        `https://obs.cn-north-1.myhuaweicloud.com`
+      );
+      HONOROBSSDK.uploadFile(
+        fileName,
+        fileData,
+        function () {
+          console.log('sdk complete');
+          //success，obs视频上传成功，继续进行cuep上传
+
+          let objURL = URL.createObjectURL(fileData);
+          $('#currVideo').attr('src', objURL);
+          let currVideo = $('#currVideo')[0];
+          $('#videoPreview').show();
+          currVideo.addEventListener('loadeddata', function () {
+            window.videoloadeddata = new Date().getTime();
+            // 获取首帧图片，因视频加载有延迟，故增加了一个0.3s延时
+
+            let promiseImg = new Promise((resolve, reject) => {
+              setTimeout(function () {
+                let canvas = document.createElement('canvas');
+                // 首帧图片质量比例，默认1，大小区间  0.01-1
+                let scale = $('#videoPreview').data('ratio') || '1';
+                canvas.width = currVideo.videoWidth * scale;
+                canvas.height = currVideo.videoHeight * scale;
+                canvas
+                  .getContext('2d')
+                  .drawImage(currVideo, 0, 0, canvas.width, canvas.height);
+                let imgsrc = canvas.toDataURL('image/png');
+                $('#videoPreviewImg').attr('src', imgsrc);
+                resolve({ fileName, imgsrc });
+                $('#videoPreview').hide();
+              }, 300);
+            });
+
+            promiseImg.then(({ fileName, imgsrc }) => {
+              console.log(`generating ${fileName} and ${imgsrc} `);
+              formdata.append('imageNames', fileName);
+              formdata.append('coverPicture', imgsrc);
+              // axios.post(
+              //   `//${apiHost}/abroad/shootMatch/submitObsVideo`,
+              //   formdata,
+              //   {
+              //     headers: {
+              //       'Content-Type': 'application/x-www-form-urlencoded',
+              //     },
+              //   }
+              // );
+
+              axios({
+                method: 'post',
+                url: `//${apiHost}/abroad/shootMatch/submitObsVideo`,
+                data: formdata,
+                headers: {
+                  'Content-type': 'application/x-www-form-urlencoded',
+                },
+              })
+                .then(function (response) {
+                  console.log(response);
+
+                  setUploadSuccessful(1);
+
+                  if (response.data.code === '400') {
+                    setUploadSuccessful(0);
+                    HONOROBSSDK.deleteFile(fileName);
+                  }
+                  if (response.data.code === '100007') {
+                    setUploadSuccessful(2);
+                    HONOROBSSDK.deleteFile(fileName);
+                  }
+                  handleClose();
+                  setIsUploading(false);
+                  setCountry('0');
+                  setWorkTitle('');
+                  setWorkType('photo');
+                  setUploadResult(true);
+                  formdata = null;
+                })
+                .catch(function (error) {
+                  HONOROBSSDK.deleteFile(fileName);
+                  console.log(error);
+                  setUploadSuccessful(0);
+                  handleClose();
+                  setCountry('0');
+                  setWorkTitle('');
+                  setWorkType('photo');
+                  setUploadResult(true);
+                  setIsUploading(false);
+                  formdata = null;
+                });
+            });
+          });
+        },
+        function () {
+          //fail，obs视频上传失败，提示稍后重试
+          setUploadSuccessful(0);
+          setUploadResult(true);
+          setIsUploading(false);
+          setCountry('0');
+          setWorkTitle('');
+          setWorkType('photo');
+          handleClose();
+          formdata = null;
+        }
+      );
+    }
   };
 
   return (
@@ -117,62 +308,164 @@ const Join = ({ username = '', userid = '' }) => {
             style={{ backgroundColor: 'none' }}
           ></Image>
         </div>
-        <Button variant='outlined' color='primary' onClick={handleClickOpen}>
-          Open form dialog
+        <Button
+          variant='outlined'
+          className='join-button'
+          onClick={() => {
+            isLogin && handleClickOpen();
+            !isLogin && loginBtn();
+          }}
+        >
+          {!isLogin ? `Login to Join` : `Join Now`}
         </Button>
+
+        <div id='videoPreview' className='preview-box' data-ratio='0.3'>
+          <input
+            type='hidden'
+            id='videoImg'
+            name='coverPicture'
+            value=''
+          ></input>
+          <img id='videoPreviewImg' className='hidden' src='' alt=''></img>
+          <video id='currVideo' src='' controls='controls'></video>
+        </div>
       </Box>
+
       <Dialog
+        className='upload-dialog'
         open={open}
         onClose={handleClose}
         aria-labelledby='form-dialog-title'
       >
-        <DialogTitle id='form-dialog-title'>Join</DialogTitle>
+        <DialogTitle className='title' id='form-dialog-title'>
+          Join
+        </DialogTitle>
         <DialogContent>
           <TextField
             autoFocus
             margin='dense'
-            id='name'
-            label='* your work title'
+            id='workTitle'
             type='text'
+            label='* Your work title'
+            error={workTitleError}
+            className='input-text'
             fullWidth
+            onChange={handleWorkTitleChange}
           />
 
           <Select
             labelId='demo-customized-select-label'
             id='demo-customized-select'
-            value={age}
+            value={country}
+            error={countryError}
+            className='input-item'
+            fullWidth
             onChange={handleChange}
           >
-            <MenuItem value=''>
-              <em>None</em>
-            </MenuItem>
-            <MenuItem value={10}>Ten</MenuItem>
-            <MenuItem value={20}>Twenty</MenuItem>
-            <MenuItem value={30}>Thirty</MenuItem>
+            <MenuItem value='0'>* Please select your country/region</MenuItem>
+
+            {countryList &&
+              countryList.map(({ value, nodeName }) => (
+                <MenuItem key={value} value={value}>
+                  {nodeName}
+                </MenuItem>
+              ))}
           </Select>
 
+          <Select
+            labelId='demo-customized-select-label'
+            id='demo-customized-select'
+            value={workType}
+            className='input-item'
+            fullWidth
+            onChange={handleTypeChange}
+          >
+            <MenuItem value={'photo'}>Photo</MenuItem>
+            <MenuItem value={'video'}>Video</MenuItem>
+          </Select>
+          {/* 
           <DropzoneArea
-            maxFileSize={999999999}
-            acceptedFiles={['image/*', 'video/mp4']}
-            dropzoneText={'Drag and drop an image here or click'}
-            onChange={(files) => setFile(files)}
-          />
+              maxFileSize={workType === 'photo' ? 20971520 : 209715200}
+              filesLimit={1}
+              acceptedFiles={workType === 'photo' ? ['image/*'] : ['video/mp4']}
+              dropzoneText={'Drag and drop an image here or click'}
+              onChange={(files) => {
+                console.log('file changed');
+                setFile(files);
+              }}
+            /> */}
+          {workType === 'photo' && (
+            <DropzoneArea
+              maxFileSize={20971520}
+              dropzoneClass={
+                fileError
+                  ? `upload-dropzone upload-dropzone-error`
+                  : `upload-dropzone`
+              }
+              filesLimit={1}
+              acceptedFiles={['image/*']}
+              dropzoneText={
+                'Please add a photo(JPG/PNG) of max. 20MB, or a video(MP4) of max. 200MB.'
+              }
+              onChange={(files) => {
+                console.log('file changed');
+                setFile(files);
+              }}
+            />
+          )}
+
+          {workType === 'video' && (
+            <DropzoneArea
+              maxFileSize={209715200}
+              filesLimit={1}
+              dropzoneClass={
+                fileError
+                  ? `upload-dropzone upload-dropzone-error`
+                  : `upload-dropzone`
+              }
+              acceptedFiles={['video/mp4']}
+              dropzoneText={
+                'Please add a photo(JPG/PNG) of max. 20MB, or a video(MP4) of max. 200MB.'
+              }
+              onChange={(files) => {
+                console.log('file changed');
+                setFile(files);
+              }}
+            />
+          )}
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose} color='primary'>
-            Cancel
-          </Button>
           <Button
+            disabled={isUploading ? true : false}
             onClick={() => {
-              handleClose();
               console.log('Files:', file);
               uploadWorks();
             }}
             color='primary'
+            size='large'
           >
-            Subscribe
+            {isUploading ? 'Uploading...' : 'Submit Your work'}
           </Button>
         </DialogActions>
+      </Dialog>
+
+      <Dialog
+        open={uploadResult}
+        onClose={handleClose}
+        aria-labelledby='form-dialog-title'
+      >
+        <DialogContent>
+          <DialogContentText id='alert-dialog-description'>
+            {uploadSuccessful === 1
+              ? `Your work has been successfully
+            uploaded.`
+              : ''}
+            {uploadSuccessful === 2 ? `Please Login` : ''}
+            {uploadSuccessful === 0
+              ? `Upload failed, please try again later`
+              : ''}
+          </DialogContentText>
+        </DialogContent>
       </Dialog>
     </Box>
   );

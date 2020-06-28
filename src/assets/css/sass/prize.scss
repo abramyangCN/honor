@@ -34,11 +34,11 @@
 
   .prize-container {
     position: absolute;
-    margin-top: p2r(100);
+    margin-top: p2r(140);
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
+    height: calc(100%-p2r(140));
     z-index: 10;
   }
 
@@ -92,9 +92,7 @@
     @include media($medium) {
       width: p2r(300);
     }
-    @include media($tablet) {
-      width: p2r(340);
-    }
+
     h3 {
       color: $darkBlue;
       font-weight: bold;
@@ -124,6 +122,16 @@
       @include media($tablet) {
         width: p2r(150);
         height: p2r(150);
+      }
+    }
+
+    @include media($tablet) {
+      width: p2r(340);
+      .subtitle {
+        font-size: p2r(24);
+      }
+      .description {
+        font-size: p2r(24);
       }
     }
   }

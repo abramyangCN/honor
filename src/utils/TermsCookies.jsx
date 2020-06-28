@@ -5,38 +5,41 @@ const TermsCookies = () => {
   return (
     <div className='terms-cookies'>
       <div className='terms-cookies-paper'>
-        <Typography>
+        <div className='tc-description'>
           The “Looking to the future” contest (hereinafter referred to as the
           "Activity") is organized by Huawei Device Co., Ltd (the “Organizer”).
           Activity participants (the "Participants") take part in the Activity
           by submitting works. All Participants shall be deemed as having agreed
           to the following terms and conditions.
-        </Typography>
+        </div>
         <Typography variant='h4'>Activity Date </Typography>
-        <Typography>
+        <div className='tc-description'>
           18:00, 29th June, 2020 to 24:00, 15th July, 2020 (UTC+8)
-        </Typography>
+        </div>
 
         <Typography variant='h4'>Activity</Typography>
-        <Typography>
+        <div className='tc-description'>
           You have the chance to win the HONOR MagicBook (Space Gray based on
           the local price) and other prizes through participation in the Looking
           to the future contest. All the winner information is based on the
           activity website announcement.
-        </Typography>
+        </div>
 
         <Typography variant='h4'>How to join</Typography>
-        <Typography>
+        <div className='tc-description'>
           (1) Be a registered member of HiHONOR (hihonor.com/global/).
           <br />
           (2) Participants should design a photo (JPG or PNG, less than 20MB) or
           a video (MP4, less than 200MB).
           <br />
-          (3) Participants need to upload works to this contest page
-          (www.hihonor.com/global/events/ microsoft365-challenge/).
-        </Typography>
+          (3) Participants need to upload works to this contest page (
+          <a href='//www.hihonor.com/global/events/microsoft365-challenge/'>
+            www.hihonor.com/global/events/microsoft365-challenge/
+          </a>
+          ).
+        </div>
         <Typography variant='h4'>Activity Rules</Typography>
-        <Typography>
+        <div className='tc-description'>
           (1) The awards will be included HONOR Master Award (x2), HONOR
           Creative Award (x3), and HONOR Brilliance Award (x5). The prizes for
           activity include HONOR MagicBook (Space Gray based on the local
@@ -64,9 +67,9 @@ const TermsCookies = () => {
           (6) Any work submitted cannot include any third-party logos that are
           not related to the Contest. Employees of the Organizer and its
           partners are not allowed to participate in the Contest.
-        </Typography>
+        </div>
         <Typography variant='h4'>Selection Criteria</Typography>
-        <Typography>
+        <div className='tc-description'>
           The review criteria, including but are not limited to the following:
           <br />
           (1) Connect with Topic "Looking to the future", Poster, animation,
@@ -85,10 +88,10 @@ const TermsCookies = () => {
           (6) Judges Score: Percentage System; the highest and lowest scores
           will be removed, and an average score will be calculated based on the
           remaining results.
-        </Typography>
+        </div>
 
         <Typography variant='h4'>Prize Distribution</Typography>
-        <Typography>
+        <div className='tc-description'>
           The Organizer will release the winner Announcement on www.hihonor.com
           within seven days after the contest, and winners should contact us
           through clubglobal@hihonor.com to confirm the awards information.
@@ -101,8 +104,8 @@ const TermsCookies = () => {
           prize cannot be provided, The Organizer has the right to substitute a
           prize of similar value. Prizes cannot be transferred to another person
           or redeemed for cash or other objects.
-        </Typography>
-        <Typography>
+        </div>
+        <div className='tc-description'>
           After receiving the prizes, winners should confirm the prizes on the
           spot. If an abnormality is found, please contact the sender directly.
           If the prize is found to be damaged after signing, the Organizer will
@@ -113,9 +116,9 @@ const TermsCookies = () => {
           accessory or smartphone that is won from the Contest, please go to the
           ASC/MSC in your residence, there will be service personnel here to
           help you with the concerned issue.
-        </Typography>
+        </div>
         <Typography variant='h4'>Privacy and Personal Information</Typography>
-        <Typography>
+        <div className='tc-description'>
           The Organizer collects personal data (i.e., HUAWEI ID,
           Country/Region), HUAWEI ID is only used for Participants to log in to
           the HONOR official website to participate in the activity, and
@@ -138,10 +141,10 @@ const TermsCookies = () => {
             https://www.hihonor.com/global/privacy-policy/
           </a>
           ).
-        </Typography>
+        </div>
 
         <Typography variant='h4'>Rights of Use</Typography>
-        <Typography>
+        <div className='tc-description'>
           The copyright of any submitted work will be retained by its
           creator/submitter. However, all participants should have independent,
           complete, clear, and uncontested copyright of any and all submitted
@@ -159,7 +162,7 @@ const TermsCookies = () => {
           in network media, print media, photography exhibitions, retail stores,
           road shows, digital content, out-of-home media, and other marketing
           activities.
-        </Typography>
+        </div>
       </div>
     </div>
   );
