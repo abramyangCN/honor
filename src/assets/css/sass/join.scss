@@ -71,6 +71,10 @@
     margin-top: p2r(50);
   }
 
+  .steps-container {
+    padding-top: p2p(80, 1440);
+  }
+  
   @include media($tablet) {
     z-index: 10;
     background: #141414;
@@ -110,7 +114,6 @@
 
     .steps-container {
       flex-wrap: wrap;
-      padding-top: p2r(80);
       .steps-item {
         max-width: 100%;
         width: 100%;
