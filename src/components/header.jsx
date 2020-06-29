@@ -185,7 +185,7 @@ export default function Header(props) {
               spy={true}
               smooth={true}
               hashSpy={true}
-              offset={-130}
+              offset={-160}
               duration={400}
               isDynamic={true}
               onClick={handleMenuClose}

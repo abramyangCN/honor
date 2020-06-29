@@ -116,6 +116,12 @@
     // transform: scale(0.7);
   }
 
+  .swiper-card-inner {
+    .MuiPaper-root {
+      background: none;
+    }
+  }
+
   @include media($tablet) {
     z-index: 5;
     padding-top: 0;
