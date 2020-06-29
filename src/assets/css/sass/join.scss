@@ -123,6 +123,12 @@
       padding: p2r(40);
       box-sizing: border-box;
     }
+
+    .join-button {
+      border-radius: p2r(32);
+      line-height: p2r(64);
+      padding: 0 15px;
+    }
   }
 }
 
@@ -142,7 +148,6 @@
     max-width: 100%;
   }
 
-
   &.upload-dropzone-error {
     .MuiDropzoneArea-textContainer {
       p {
@@ -153,7 +158,6 @@
 }
 
 .upload-dialog {
-
   .MuiSnackbar-root {
     @include media($tablet) {
       position: absolute;
