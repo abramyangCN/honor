@@ -130,6 +130,8 @@
     .tutorial-container {
       position: relative;
       box-sizing: border-box;
+      margin-top: p2p(150, 750);
+      padding-bottom: p2p(250, 750);
     }
     .swiper-container {
       width: 80%;
