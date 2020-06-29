@@ -249,6 +249,10 @@ a {
   }
 }
 
+a.close {
+  z-index: 199;
+}
+
 .preview-box {
   display: block;
   margin: 0 auto;

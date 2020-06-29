@@ -46,7 +46,7 @@
 
   .swiper-container {
     margin-top: p2p(90, 1440);
-    width: p2r(1024);
+    width: p2r(1024 * 0.6);
   }
   .swiper-wrapper {
     align-items: center;
@@ -113,7 +113,7 @@
     z-index: 99;
     flex-basis: 100%;
     max-width: 100%;
-    transform: scale(0.7);
+    // transform: scale(0.7);
   }
 
   @include media($tablet) {
@@ -132,7 +132,7 @@
       box-sizing: border-box;
     }
     .swiper-container {
-      width: 100%;
+      width: 80%;
     }
 
     h3 {
