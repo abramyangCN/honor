@@ -34,7 +34,7 @@
 
   .prize-container {
     position: absolute;
-    margin-top: p2r(140);
+    margin-top: p2r(180);
     top: 0;
     left: 0;
     width: 100%;
@@ -184,7 +184,6 @@
     }
   }
   @include media($tablet) {
-    background: #322f2f;
     padding-top: p2r(80);
     padding-bottom: p2r(280);
 
@@ -209,6 +208,14 @@
       .prize-third {
         order: 3;
       }
+    }
+
+    .prize-backgroud {
+      top: 0;
+    }
+
+    .prize-backgroud-img {
+      height: 100%;
     }
   }
 }

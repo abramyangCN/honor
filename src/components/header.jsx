@@ -185,7 +185,7 @@ export default function Header(props) {
               spy={true}
               smooth={true}
               hashSpy={true}
-              offset={-130}
+              offset={-140}
               duration={400}
               isDynamic={true}
               onClick={handleMenuClose}
@@ -221,7 +221,7 @@ export default function Header(props) {
           </ButtonBase>
           <div className={classes.grow}></div>
           <div className={`${classes.sectionDesktop} nav-links`}>
-            {data.map(({ id, title, link, hrefLink }) => {
+            {data.map(({ id, title, link, hrefLink, offset }) => {
               if (link)
                 return (
                   <ScrollLink
@@ -229,7 +229,7 @@ export default function Header(props) {
                     spy={true}
                     smooth={true}
                     hashSpy={true}
-                    offset={-150}
+                    offset={offset || -150}
                     duration={400}
                     isDynamic={true}
                     key={id}

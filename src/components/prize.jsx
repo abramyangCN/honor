@@ -4,11 +4,13 @@ import Box from '@material-ui/core/Box';
 import Image from 'material-ui-image';
 import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
+import isMobilejs from 'ismobilejs';
 
 import TitleBullets from '../utils/TitleBullets';
 import HonorBadge from '../utils/HonorBadge';
 
 import bgImage from '../assets/images/prize/prize_bg.png';
+import bgImageM from '../assets/images/prize/prize_bg_m.png';
 import award01 from '../assets/images/prize/award_01.png';
 import award02 from '../assets/images/prize/award_02.png';
 import award03 from '../assets/images/prize/award_03.png';
@@ -38,16 +40,25 @@ const Prize = (props) => {
     setExpand(item);
   };
 
+  const isMobile = isMobilejs().phone;
+
   return (
     <Box className='prize-wrap'>
-      <Box className='prize-backgroud'>
-        <Image
-          aspectRatio={1440 / 935}
-          src={bgImage}
-          style={{ backgroundColor: 'none' }}
-        ></Image>
-      </Box>
-      <Box className='prize-container' id='prize' name='prize'>
+      {isMobile ? (
+        <Box className='prize-backgroud'>
+          <img className='prize-backgroud-img' src={bgImage} alt=''></img>
+        </Box>
+      ) : (
+        <Box className='prize-backgroud'>
+          <Image
+            aspectRatio={1440 / 935}
+            src={isMobile ? bgImageM : bgImage}
+            style={{ backgroundColor: 'none' }}
+          ></Image>
+        </Box>
+      )}
+
+      <Box className='prize-container' id='prize'>
         <Typography variant='h2' className='title'>
           Prize
         </Typography>

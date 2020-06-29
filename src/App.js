@@ -23,6 +23,7 @@ const data = [
     title: 'About M365',
     link: 'home',
     isAnchor: true,
+    offset: '',
   },
   { id: '1', title: 'Prize', link: 'prize', isAnchor: true },
   {
@@ -30,26 +31,30 @@ const data = [
     title: 'Tutorial Video',
     link: 'tutorial',
     isAnchor: true,
+    offset: '',
   },
   {
     id: '3',
     title: 'How To Join',
     link: 'join',
     isAnchor: true,
+    offset: -160,
   },
   {
     id: '4',
     title: 'Our Judges',
     link: 'judge',
     isAnchor: true,
+    offset: '',
   },
   // {
   //   id: '5',
   //   title: 'Winner',
   //   link: 'winner',
   //   isAnchor: true,
+  //   offset: '',
   // },
-  { id: '6', title: 'T&C', hrefLink: 'tc', isAnchor: false },
+  { id: '6', title: 'T&C', hrefLink: 'tc', isAnchor: false, offset: '' },
 ];
 
 let cookieInfo = cookies.loadAll();
