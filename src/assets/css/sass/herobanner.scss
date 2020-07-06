@@ -14,11 +14,29 @@
   }
 
   p {
-    font-size: p2r(28);
+    font-size: p2r(18);
     color: $paragraph;
     margin: {
       top: p2e(16, 28);
       bottom: p2e(16, 28);
+    }
+    @include media($tablet) {
+      font-size: p2r(28);
+      margin: p2e(16, 28) p2e(40, 28);
+    }
+  }
+
+  .herobanner-button {
+    border-radius: p2e(28, 18);
+    font-size: p2r(18);
+    line-height: 1em;
+    padding: p2e(10, 18) p2e(20, 18);
+    color: $paragraph;
+    border: 1px solid $paragraph;
+    @include media($tablet) {
+      border-radius: p2e(48, 28);
+      font-size: p2r(28);
+      padding: p2e(20, 28) p2e(40, 28);
     }
   }
 
@@ -43,5 +61,31 @@
     }
 
     padding-bottom: p2r(100);
+  }
+}
+
+.MuiDialog-root {
+  &.herobanner-dialog {
+    .MuiDialog-paper {
+      padding: p2r(20);
+      @include media($tablet) {
+        margin: 0;
+      }
+    }
+  }
+  .herobanner-button {
+    border-radius: p2e(28, 18);
+    line-height: 1em;
+    padding: p2e(10, 18) p2e(20, 18);
+    color: $paragraph;
+    border: 1px solid $paragraph;
+    margin-bottom: p2e(20, 18);
+    text-align: center;
+    display: block;
+    @include media($tablet) {
+      border-radius: p2e(48, 28);
+      font-size: p2r(28);
+      padding: p2e(20, 28) p2e(30, 28);
+    }
   }
 }

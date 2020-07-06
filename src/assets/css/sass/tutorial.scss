@@ -45,8 +45,8 @@
   }
 
   .swiper-container {
-    margin-top: p2p(90, 1440);
-    width: p2r(1024 * 0.6);
+    margin-top: p2p(80, 1440);
+    width: p2r(1024);
   }
   .swiper-wrapper {
     align-items: center;
@@ -73,6 +73,10 @@
       padding: 0;
       video {
         width: 100%;
+      }
+      img {
+        width: 100%;
+        height: 100%;
       }
       .video-play-button {
         @include absoluteCenter;
@@ -111,8 +115,6 @@
     transform: scale(1);
     transition: all 0.3s ease 0.2s;
     z-index: 99;
-    flex-basis: 100%;
-    max-width: 100%;
     // transform: scale(0.7);
   }
 
@@ -140,7 +142,7 @@
       padding-bottom: p2p(250, 750);
     }
     .swiper-container {
-      width: 80%;
+      width: 100%;
     }
 
     h3 {
