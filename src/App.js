@@ -43,12 +43,12 @@ const data = [
     link: 'judge',
     isAnchor: true,
   },
-  // {
-  //   id: '5',
-  //   title: 'Winner',
-  //   link: 'winner',
-  //   isAnchor: true,
-  // },
+  {
+    id: '5',
+    title: 'Winner',
+    link: 'winner',
+    isAnchor: true,
+  },
   { id: '6', title: 'T&C', hrefLink: 'tc', isAnchor: false },
 ];
 
@@ -106,7 +106,7 @@ class App extends Component {
         <Tutorial />
         <Join isLogin={isLogin()} countryList={this.state.countryList} />
         <Judge />
-        {/* <Winner /> */}
+        <Winner />
         <Footer />
       </React.Fragment>
     );

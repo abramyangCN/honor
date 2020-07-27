@@ -80,7 +80,10 @@
         width: 100%;
       }
       img {
-        width: 100%;
+        height: p2r(400);
+        margin: 0 auto;
+        margin-top: p2r(36);
+        display: block;
       }
       .video-play-button {
         @include absoluteCenter;
@@ -141,6 +144,9 @@
 
     h3 {
       padding: 0 p2r(20);
+      @include media($tablet) {
+        font-size: p2r(22);
+      }
     }
   }
 
@@ -152,7 +158,7 @@
   }
 
   .first-swiper {
-    .swiper-slide-prev{
+    .swiper-slide-prev {
       opacity: 0;
     }
   }
@@ -187,4 +193,9 @@
       margin-top: p2r(20);
     }
   }
+}
+
+.width-100 {
+  height: auto !important;
+  width: 100%;
 }
