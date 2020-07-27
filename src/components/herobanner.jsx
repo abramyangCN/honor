@@ -62,7 +62,7 @@ const HeroBanner = (props) => {
               <DialogContentText>
                 <Button
                   onClick={handleLinkClose}
-                  href='//www.hihonor.com/france/product/honor-magicbook-14'
+                  href='//www.hihonor.com/france/product/honor-magicbook14'
                   className='herobanner-button'
                 >
                   France - Français {'>'}

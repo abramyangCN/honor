@@ -33,6 +33,7 @@
     padding: p2e(10, 18) p2e(20, 18);
     color: $paragraph;
     border: 1px solid $paragraph;
+    text-transform: none;
     @include media($tablet) {
       border-radius: p2e(48, 28);
       font-size: p2r(28);
@@ -81,6 +82,7 @@
     border: 1px solid $paragraph;
     margin-bottom: p2e(20, 18);
     text-align: center;
+    text-transform: none;
     display: block;
     @include media($tablet) {
       border-radius: p2e(48, 28);
